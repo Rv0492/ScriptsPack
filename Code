@@ -130,7 +130,7 @@ local Section = TabOther:CreateSection("N00BKIDS")
 local Button = TabOther:CreateButton({
    Name = "Load N00BKIDS",
    Callback = function()
-    
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Rv0492/ScriptsPack/refs/heads/main/N00BKIDS'))()
        Rayfield:Notify({
    Title = "Done",
    Content = "The script is Succesfuly loaded",
