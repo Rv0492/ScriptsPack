@@ -1,78 +1,79 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "CCKH040 Scripts Pack",
-   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   Icon = 139025597235579,
    LoadingTitle = "Scripts Pack",
    LoadingSubtitle = "by CCKH040",
-   Theme = "Default", -- Check https://docs.sirius.menu/rayfield/configuration/themes
-
-   DisableRayfieldPrompts = false,
-   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
-
+   Theme = "Default",
+   DisableRayfieldPrompts = true,
+   DisableBuildWarnings = true,
    ConfigurationSaving = {
       Enabled = true,
-      FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
+      FolderName = CCKH040,
+      FileName = "HubSettings"
    },
-
    Discord = {
-      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
    },
-
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = true,
    KeySettings = {
       Title = "Scripts Pack",
       Subtitle = "by CCKH040",
-      Note = "Enter the security key to coninue", -- Use this to tell the user how to get a key
-      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"CCKH1324"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Note = "Enter the security key to coninue",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"CCKH1324"}
    }
 })
 
-local TabHubs = Window:CreateTab("Hubs", 4483362458) -- Title, Image
-local TabGames = Window:CreateTab("Games", 4483362458) -- Title, Image
-local TabOther = Window:CreateTab("Other", 4483362458) -- Title, Image
+local function NotifyLoaded()
+    Rayfield:Notify({
+        Title = "Done",
+        Content = "The script is Succesfuly loaded",
+        Duration = 6.5,
+        Image = 139025597235579,
+})
+end
 
+-- Tabs
+local TabHubs = Window:CreateTab("Hubs", 4483362458)
+local TabGames = Window:CreateTab("Games", 4483362458)
+local TabOther = Window:CreateTab("Other", 4483362458)
+
+-- Other, Destroy UI
 local Section = TabOther:CreateSection("Destroy UI")
 local Button = TabOther:CreateButton({
    Name = "Destroy",
    Callback = function()
    Rayfield:Destroy()
+   NotifyLoaded()
    end,
 })
 
+-- Games, Grow a Garden
 local Section = TabGames:CreateSection("Grow a Garden")
 local Button = TabGames:CreateButton({
    Name = "Load Grow a Garden",
    Callback = function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/tesghg/Grow-a-Garden/main/ameicaa_Grow_A_Garden.lua"))()
-   Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+   NotifyLoaded()
    end,
 })
 
+-- Other, Hat Hub
 local Section = TabHubs:CreateSection("Hat Hub")
 local Button = TabHubs:CreateButton({
    Name = "Load Hat Hub",
    Callback = function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/inkdupe/hat-scripts/refs/heads/main/updatedhathub.lua"))()
-      Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+   NotifyLoaded()
    end,
 })
 
+-- Other, Adonis Bypass
 local Section = TabOther:CreateSection("Adonis Bypass")
 local Button = TabOther:CreateButton({
    Name = "Load Adonis Bypass",
@@ -89,98 +90,105 @@ local Button = TabOther:CreateButton({
                 end)
             end
         end
-           Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+        NotifyLoaded()
    end,
 })
 
+-- Other, Chat Bypass
 local Section = TabOther:CreateSection("Chat Bypass")
 local Button = TabOther:CreateButton({
    Name = "Load Chat Bypass",
    Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/XE3vex/TheAb/refs/heads/main/AxurBypass",true))()
-       Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
-    end,
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/XE3vex/TheAb/refs/heads/main/AxurBypass",true))()
+   NotifyLoaded()
+   end,
 })
 
+-- Other, Infinite Yield
 local Section = TabOther:CreateSection("Infinite Yield")
 local Button = TabOther:CreateButton({
    Name = "Load Infinite Yield",
    Callback = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-       Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+    NotifyLoaded()
     end,
 })
 
+-- Other, N00BKIDS
 local Section = TabOther:CreateSection("N00BKIDS")
 local Button = TabOther:CreateButton({
    Name = "Load N00BKIDS",
    Callback = function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Rv0492/ScriptsPack/refs/heads/main/N00BKIDS'))()
-       Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+    NotifyLoaded()
     end,
 })
 
+-- Hubs, Precieve Hub
 local Section = TabHubs:CreateSection("Precieve Hub")
 local Button = TabHubs:CreateButton({
    Name = "Load Precieve Hub",
    Callback = function()
    script_key="aduOdVhDIUDjfAwbiHSWJUZkxtzGQmrw";
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6a2f3f6560072539c77c1af87cf554f4.lua"))()
-      Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
+   loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6a2f3f6560072539c77c1af87cf554f4.lua"))()
+   NotifyLoaded()
    end,
 })
 
+-- Other, SaveIns
 local Section = TabOther:CreateSection("SaveIns")
 local Button = TabOther:CreateButton({
    Name = "Load SaveIns",
    Callback = function()
    local synsaveinstance = loadstring(game:HttpGet("https://raw.githubusercontent.com/luau/SynSaveInstance/main/saveinstance.luau", true))()
-synsaveinstance()
-       Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
-})
-    end,
+   synsaveinstance()
+   NotifyLoaded()
+   end,
 })
 
+-- Hubs, ZapHub
 local Section = TabHubs:CreateSection("ZapHub")
 local Button = TabHubs:CreateButton({
    Name = "Load ZapHub",
    Callback = function()
-  script_key="EvpACCmhlqeTTClYQwtSHCIxnuTPRysP";
-loadstring(game:HttpGet('https://zaphub.xyz/Exec'))()
-       Rayfield:Notify({
-   Title = "Done",
-   Content = "The script is Succesfuly loaded",
-   Duration = 6.5,
-   Image = 4483362458,
+   script_key="EvpACCmhlqeTTClYQwtSHCIxnuTPRysP";
+   loadstring(game:HttpGet('https://zaphub.xyz/Exec'))()
+   NotifyLoaded()
+   end,
 })
-    end,
+
+-- Games, Aimbot FFA
+local Section = TabGames:CreateSection("Aimbot FFA")
+local Toggle = TabGames:CreateToggle({
+   Name = "Invincibility",
+   CurrentValue = false,
+   Flag = "ToggleInv",
+   Callback = function(ValueAIMINV)
+   NotifyLoaded()
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    while ValueAIMINV == true do
+        game:GetService("ReplicatedStorage"):WaitForChild("PlayerHitEvent"):FireServer(LocalPlayer, -999)
+        wait(1)
+    end
+   end,
+})
+
+local Toggle = TabGames:CreateToggle({
+   Name = "Kill All",
+   CurrentValue = false,
+   Flag = "ToggleKill",
+   Callback = function(ValueAIMKILL)
+   NotifyLoaded()
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    while ValueAIMKILL == true do
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            game:GetService("ReplicatedStorage"):WaitForChild("PlayerHitEvent"):FireServer(player, 999)
+        end
+    end
+    wait(1)
+    end
+   end,
 })
