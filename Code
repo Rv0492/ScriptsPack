@@ -173,19 +173,6 @@ local Toggle = TabGames:CreateToggle({
     end
    end,
 })
-local Toggle = TabGames:CreateToggle({
-   Name = "Kill All",
-   CurrentValue = false,
-   Flag = "ToggleKill",
-   Callback = function(ValueAIMKILL)
-   NotifyLoaded()
-    local Players = game:GetService("Players")
-    local LocalPlayer = Players.LocalPlayer
-    while ValueAIMKILL == true do
-    
-    end
-   end,
-})
 local killingAIMvalue = false
 local Toggle = TabGames:CreateToggle({
    Name = "Kill All",
@@ -259,6 +246,7 @@ local Toggle = TabGames:CreateToggle({
    Callback = function(ValueNOOBKILL)
       killingNoobs = ValueNOOBKILL
       NotifyLoaded()
+
       if killingNoobs then
          task.spawn(function()
             while killingNoobs do
