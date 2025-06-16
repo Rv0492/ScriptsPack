@@ -173,6 +173,43 @@ local Toggle = TabGames:CreateToggle({
     end
    end,
 })
+local Toggle = TabGames:CreateToggle({
+   Name = "Kill All",
+   CurrentValue = false,
+   Flag = "ToggleKill",
+   Callback = function(ValueAIMKILL)
+   NotifyLoaded()
+    local Players = game:GetService("Players")
+    local LocalPlayer = Players.LocalPlayer
+    while ValueAIMKILL == true do
+    
+    end
+   end,
+})
+local killingAIMvalue = false
+local Toggle = TabGames:CreateToggle({
+   Name = "Kill All",
+   CurrentValue = false,
+   Flag = "ToggleKill",
+   Callback = function(ValueAIMKILL)
+      killingAIMvalue = ValueAIMKILL
+      NotifyLoaded()
+      if killingAIMvalue then
+         task.spawn(function()
+            while killingAIMvalue do
+                local Players = game:GetService("Players")
+                local LocalPlayer = Players.LocalPlayer
+                    for _, player in pairs(Players:GetPlayers()) do
+                    if player ~= LocalPlayer then
+                        game:GetService("ReplicatedStorage"):WaitForChild("PlayerHitEvent"):FireServer(player, 999)
+                    end
+                end
+                wait(1)
+            end
+         end)
+      end
+   end,
+})
 
 -- Other, Piano
 local Section = TabOther:CreateSection("Piano")
@@ -186,21 +223,51 @@ local Button = TabOther:CreateButton({
    end,
 })
 
-local Toggle = TabGames:CreateToggle({
-   Name = "Kill All",
-   CurrentValue = false,
-   Flag = "ToggleKill",
-   Callback = function(ValueAIMKILL)
+-- Games, Noobs Must Die
+local Section = TabGames:CreateSection("Noobs Must Die")
+local Button = TabGames:CreateButton({
+   Name = "Get All Shop Items",
+   Callback = function()
+   game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Armor")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("BattleArmor")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Bloxiade")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("BloxyCola")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("BreathOfFire")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Cake")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Chezburger")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Disruptor")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("DominoCrown")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Epicsauce")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Magnet")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Pizza")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("RegenCoil")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("SpeedCoil")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Taco")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("TeddyBloxpin")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Tnt")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("VikingHelmet")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("Windforce")
+    game:GetService("ReplicatedStorage"):WaitForChild("PlrMan"):WaitForChild("Items"):WaitForChild("PickupItem"):FireServer("WitchesBrew")
    NotifyLoaded()
-    local Players = game:GetService("Players")
-    local LocalPlayer = Players.LocalPlayer
-    while ValueAIMKILL == true do
-    for _, player in pairs(Players:GetPlayers()) do
-        if player ~= LocalPlayer then
-            game:GetService("ReplicatedStorage"):WaitForChild("PlayerHitEvent"):FireServer(player, 999)
-        end
-    end
-    wait(1)
-    end
+   end,
+})
+local killingNoobs = false
+local Toggle = TabGames:CreateToggle({
+   Name = "Kill All Noobs",
+   CurrentValue = false,
+   Flag = "ToggleKillNoobs",
+   Callback = function(ValueNOOBKILL)
+      killingNoobs = ValueNOOBKILL
+      NotifyLoaded()
+      if killingNoobs then
+         task.spawn(function()
+            while killingNoobs do
+               for _, v in pairs(workspace:WaitForChild("Enemies"):GetChildren()) do
+                  game:GetService("ReplicatedStorage"):WaitForChild("HurtEnemy"):FireServer(v, 999)
+               end
+               task.wait(0.1)
+            end
+         end)
+      end
    end,
 })
